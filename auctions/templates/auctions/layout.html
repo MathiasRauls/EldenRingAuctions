@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Elden Ring Auctions{% endblock %}</title>
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{% static 'auctions/favicon-32x32.png' %}" sizes="32x32" />
+        <link rel="icon" type="image/png" href="{% static 'auctions/favicon-16x16.png' %}" sizes="16x16" />
+    </head>
+    <body>
+        <img src="{% static 'auctions/background.jpg' %}" class="bg-image">
+        <div class="cont">
+            <h1 class="title">Elden ring auctionS</h1>
+        <div class="signin">
+            {% if user.is_authenticated %}
+                Signed in as <strong>{{ user.username }}</strong>.
+            {% else %}
+                Not signed in.
+            {% endif %}
+        </div>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">listings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'categories' %}">categories</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create' %}">create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'watchlist' %}">watchlist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">register</a>
+                </li>
+            {% endif %}
+        </ul>
+        <hr style="border-bottom:4px white;padding-top:15px; ">
+        {% block body %}
+        {% endblock %}
+        </div>
+        <div class="foot">✨ made by - <a href="https://www.im-mathias.com/">mathias rauls</a> ✨</div>
+
+    </body>
+</html>

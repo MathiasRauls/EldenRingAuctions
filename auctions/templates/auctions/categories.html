@@ -1,0 +1,31 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<h1>{{ cats }}</h1>
+
+{% for product in category_products %}
+
+    <!-- DISPLAYING PRODUCTS IN CERTAIN CATEGORY -->
+    <ul class="product-cont">
+        <div class="product">
+            <a href="{% url 'product' product.id %}" class="product-link">
+                <div class="product-content">
+                    <h1 class="product-name">{{ product.title }}</h1>
+                    <hr style="border-top:2px white;padding-top:10px;">
+                    <strong><p class="product-price">{{ product.price }} ETH</p></strong>
+                    <p class="product-info">{{ product.description }}</p>
+                    <br/>
+                    {% if product.pictures %}
+                        <img src="{{ product.pictures.url }}" alt="" class="product-img">
+                    {% else %}
+                        <small>No Pictures</small>
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+    </ul>
+
+{% endfor %}
+
+{% endblock %}

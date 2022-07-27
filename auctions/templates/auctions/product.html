@@ -1,0 +1,74 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+    <!-- PRODUCT DISPLAY PAGE -->
+    <div class="product-pg-cont">
+        <h1 class="product-name">{{ product.title }}</h1>
+        <hr style="border-top:2px white;padding-top:10px;">
+        <strong><p class="product-price-view">{{ product.price }} ETH</p></strong>
+        <p class="product-info-view">{{ product.description }}</p>
+        <p class="product-info-view"><a href="{% url 'category' product.category %}" class="cat-link">{{ product.category }}</a></p>
+        <p class="product-info-view">@{{ product.seller }}</p>
+        <br/>
+        {% if product.pictures %}
+            <div class="product-img-cont">
+                <img src="{{ product.pictures.url }}" alt="" class="product-img-view">
+            </div>
+        {% else %}
+            <small>No Pictures</small>
+        {% endif %}
+
+        <!-- ADD/REMOVE FROM WATCHLIST -->
+        <div class="btn">
+            <h3><a href="{% url 'change_watchlist' product.id 'product' %}" class="watch_btn">
+                {% if product.is_watched %}
+                    💖
+                {% else %}
+                    🖤
+                {% endif %}
+            </a></h3>
+        </div>
+
+        <h2 class="product-price-view">Bid: {{ product.current_bid }} ETH</h2>
+
+        <!-- BID FORM -->
+        <form method="POST" action="{% url 'product' product.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                {% if bid_msg %}
+                    {{ bid_msg }}
+                {% endif %}
+                <h2>{{ bid_form.as_table }}</h2>
+            </div>
+            <input class="bid-btn" type="submit" value="Bid">
+        </form>
+
+        <!-- COMMENT FORM -->
+        <form method="POST" action="{% url 'product' product.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                {% if msg %}
+                    {{ msg }}
+                {% endif %}
+                <h2>{{ form.as_table }}</h2>
+            </div>
+            <input class="comment-btn" type="submit" value="Send">
+        </form>
+
+        <hr class="comment-hr">
+
+        <!-- DISPLAY COMMENTS -->
+        <div class="comment-cont">
+            <ul>
+                {% for comment in comments %}
+                <p class="comment"><strong>@{{ comment.user.username }}</strong>:  {{ comment.comment }}</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+    <!-- CREATE NEW PRODUCTS PAGE -->
+    <h1>Create New Product</h1>
+    <form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <input type="submit" value="Post">
+    </form>
+    <h1>{{ message }}</h1>
+
+{% endblock %}
