@@ -16,5 +16,25 @@ My project stands out because of its interesting and original design and concept
 - Watchlist
 - Comments
 
+# How to Install and Run the Project
+
+**Use these commands:** 
+1. `git clone https://github.com/MathiasRauls/EldenRingAuctions`
+2. `cd EldenRingAuctions`
+3. `python manage.py runserver`
+
+# How to Use the Project
+
+1. Click Register and then sign up!
+2. Post, Like, Comment, or Bid on any and all posts!
+
+# Credits
+
+Thank you https://eldenring.wiki.fextralife.com/Elden+Ring+Wiki for all of the pictures and item descriptions.
+Used DALLE-2 to create the seamless listing backgrounds.
+
+Developed by Mathias Rauls ✨
+
+
 
 
