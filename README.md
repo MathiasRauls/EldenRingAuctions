@@ -1,6 +1,6 @@
 # Elden Ring Auctions
 
-![alt text](http://url/to/img.png)
+![alt text](http://url/to/img.png](https://github.com/MathiasRauls/portfolio/blob/main/eldenring.PNG)
 
 I made this website for a school project that focused on creating an Ebay-like Ecommerce site. Thrilled by this challenge I settled on the idea of an NFT marketplace that allows players of the game **Elden Ring** to sell their weapons for **cryptocurrency**.
 
